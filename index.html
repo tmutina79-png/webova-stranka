@@ -1,532 +1,107 @@
 <!DOCTYPE html>
-<html lang="cs" class="scroll-smooth">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS Gaming — Esport Tým</title>
+    <title>🌐 Projekt 4: Landing Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-
+        * { font-family: 'Inter', sans-serif; }
         body {
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             min-height: 100vh;
         }
-
         .glass {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .glass-strong {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
         }
-
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(139, 92, 246, 0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
-        }
-
-        .glow {
-            text-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
-        }
-
-        .glow-line {
-            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.6), transparent);
-            height: 1px;
-        }
-
         .gradient-text {
             background: linear-gradient(135deg, #a78bfa, #7c3aed, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
-        .hero-bg {
-            background: radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 60%),
-                        radial-gradient(ellipse at 80% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-                        radial-gradient(ellipse at 20% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
-        }
-
-        .gallery-item {
-            transition: all 0.4s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 20px 50px rgba(139, 92, 246, 0.2);
-        }
-
-        .btn-glow {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .btn-glow::before {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(135deg, #7c3aed, #a78bfa, #7c3aed);
-            border-radius: inherit;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .btn-glow:hover::before {
-            opacity: 1;
-        }
-
-        .btn-glow:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
-        }
-
-        .nav-link {
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #7c3aed, #a78bfa);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        input, textarea {
-            transition: all 0.3s ease;
-        }
-
-        input:focus, textarea:focus {
-            border-color: rgba(139, 92, 246, 0.5) !important;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .float-anim {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.8s ease forwards;
+        .prompt-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(139, 92, 246, 0.3);
         }
     </style>
 </head>
-<body class="text-white antialiased">
+<body class="text-white antialiased flex items-center justify-center p-6">
 
-    <!-- ===== NAVIGACE ===== -->
-    <nav class="glass-strong fixed top-0 w-full z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#hero" class="text-2xl font-bold tracking-tight">
-                <span class="gradient-text">NEXUS</span>
-                <span class="text-white/60 font-light ml-1">Gaming</span>
-            </a>
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#hero" class="nav-link text-sm text-white/70 hover:text-white transition">Domů</a>
-                <a href="#about" class="nav-link text-sm text-white/70 hover:text-white transition">O nás</a>
-                <a href="#gallery" class="nav-link text-sm text-white/70 hover:text-white transition">Galerie</a>
-                <a href="#contact" class="nav-link text-sm text-white/70 hover:text-white transition">Kontakt</a>
-            </div>
-            <!-- Mobile menu button -->
-            <button id="menuBtn" class="md:hidden text-white/70 hover:text-white">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-        </div>
-        <!-- Mobile menu -->
-        <div id="mobileMenu" class="hidden md:hidden px-6 pb-4">
-            <div class="flex flex-col gap-3">
-                <a href="#hero" class="text-sm text-white/70 hover:text-white transition">Domů</a>
-                <a href="#about" class="text-sm text-white/70 hover:text-white transition">O nás</a>
-                <a href="#gallery" class="text-sm text-white/70 hover:text-white transition">Galerie</a>
-                <a href="#contact" class="text-sm text-white/70 hover:text-white transition">Kontakt</a>
-            </div>
-        </div>
-    </nav>
+    <div class="max-w-3xl w-full">
 
-    <!-- ===== HERO ===== -->
-    <section id="hero" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
-        <!-- Decorative elements -->
-        <div class="absolute top-20 left-10 w-72 h-72 bg-violet-600/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-20 right-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl"></div>
-
-        <div class="text-center px-6 relative z-10 fade-in">
-            <div class="float-anim mb-8">
-                <div class="inline-flex items-center gap-2 glass rounded-full px-5 py-2 text-sm text-white/60">
-                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                    Aktivní v turnajích 2026
-                </div>
-            </div>
-
-            <h1 class="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4">
-                <span class="gradient-text glow">NEXUS</span>
+        <!-- Hlavička -->
+        <div class="text-center mb-12">
+            <p class="text-violet-400 text-sm font-semibold tracking-widest uppercase mb-3">Praktická část</p>
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+                🌐 Projekt 4: <span class="gradient-text">Landing Page</span>
             </h1>
-            <p class="text-xl md:text-2xl text-white/40 font-light tracking-widest uppercase mb-8">
-                Gaming Collective
+            <span class="inline-block bg-red-500/20 text-red-300 text-sm font-semibold px-4 py-1.5 rounded-full border border-red-500/30">
+                🔴 Vibe Master — Zaměření na deployment
+            </span>
+        </div>
+
+        <!-- Info karty -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+            <div class="glass rounded-2xl p-6 text-center">
+                <p class="text-2xl mb-2">🎯</p>
+                <p class="text-white/50 text-xs font-semibold uppercase tracking-wider mb-2">Cíl</p>
+                <p class="text-sm text-white/80 leading-relaxed">Profesionální one-page web s moderním designem — a nasazení na živý URL.</p>
+            </div>
+            <div class="glass rounded-2xl p-6 text-center">
+                <p class="text-2xl mb-2">🔑</p>
+                <p class="text-white/50 text-xs font-semibold uppercase tracking-wider mb-2">Co se naučíš</p>
+                <p class="text-sm text-white/80 leading-relaxed">Plný workflow — prompt → kód → GitHub → live web. Kompletní pipeline.</p>
+            </div>
+            <div class="glass rounded-2xl p-6 text-center">
+                <p class="text-2xl mb-2">⏱️</p>
+                <p class="text-white/50 text-xs font-semibold uppercase tracking-wider mb-2">Čas</p>
+                <p class="text-sm text-white/80 leading-relaxed">~10 minut. Výsledek je skutečný web na internetu.</p>
+            </div>
+        </div>
+
+        <!-- Prompt box -->
+        <div class="mb-10">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-lg">💬</span>
+                <h2 class="text-lg font-bold tracking-tight">PROMPT</h2>
+            </div>
+            <div class="prompt-box rounded-2xl p-6 md:p-8">
+                <p class="text-sm md:text-base text-white/70 leading-relaxed font-mono">
+                    Vytvoř moderní one-page web pro můj esport tým. Použij glassmorphism design
+                    (průhledné prvky s backdrop-blur efektem). Přidej sekce: Hero s názvem týmu a
+                    mottem, O nás s kartami členů týmu, Galerie s obrázkovým gridem, a Kontaktní formulář.
+                    Použij Tailwind CSS, dark mode, gradient pozadí a smooth scroll navigaci.
+                    Všechno v jednom HTML souboru.
+                </p>
+            </div>
+        </div>
+
+        <!-- Deploy info -->
+        <div class="glass rounded-2xl p-6 md:p-8">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="text-lg">🚀</span>
+                <h2 class="text-lg font-bold tracking-tight">Deploy za 2 minuty</h2>
+            </div>
+            <div class="flex flex-wrap items-center gap-3 text-sm">
+                <span class="bg-violet-600/20 text-violet-300 px-4 py-2 rounded-xl border border-violet-500/20 font-medium">Push na GitHub</span>
+                <span class="text-white/30">→</span>
+                <span class="bg-violet-600/20 text-violet-300 px-4 py-2 rounded-xl border border-violet-500/20 font-medium">Settings</span>
+                <span class="text-white/30">→</span>
+                <span class="bg-violet-600/20 text-violet-300 px-4 py-2 rounded-xl border border-violet-500/20 font-medium">Pages</span>
+                <span class="text-white/30">→</span>
+                <span class="bg-violet-600/20 text-violet-300 px-4 py-2 rounded-xl border border-violet-500/20 font-medium">Deploy</span>
+            </div>
+            <p class="text-white/40 text-sm mt-4">
+                Hotovo. Tvůj web je na <span class="text-violet-400 font-medium">username.github.io/repo</span>
             </p>
-
-            <div class="glow-line w-48 mx-auto mb-8"></div>
-
-            <p class="text-lg md:text-xl text-white/50 max-w-xl mx-auto mb-12 font-light leading-relaxed">
-                Hrajeme, abychom vyhráli. Spojuje nás vášeň pro esport,
-                taktické myšlení a touha být nejlepší.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#about" class="btn-glow glass-strong rounded-xl px-8 py-4 text-sm font-semibold tracking-wide hover:text-white transition">
-                    Poznej tým →
-                </a>
-                <a href="#contact" class="glass rounded-xl px-8 py-4 text-sm font-medium text-white/60 hover:text-white hover:bg-white/10 transition">
-                    Kontaktuj nás
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== O NÁS ===== -->
-    <section id="about" class="py-32 px-6 relative">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-xl">
-            <div class="glow-line"></div>
         </div>
 
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <p class="text-sm text-violet-400 font-semibold tracking-widest uppercase mb-4">Náš tým</p>
-                <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-                    Seznamte se s <span class="gradient-text">NEXUS</span>
-                </h2>
-                <p class="text-white/40 max-w-2xl mx-auto font-light">
-                    Pět hráčů, jeden cíl. Každý přináší unikátní styl a zkušenosti,
-                    které dohromady tvoří neporazitelný celek.
-                </p>
-            </div>
+    </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-                <!-- Hráč 1 -->
-                <div class="glass-card rounded-2xl p-6 text-center">
-                    <div class="w-20 h-20 mx-auto mb-4 rounded-xl bg-gradient-to-br from-violet-600/30 to-indigo-600/30 flex items-center justify-center text-3xl">
-                        🎯
-                    </div>
-                    <h3 class="font-bold text-lg mb-1">ShadowX</h3>
-                    <p class="text-violet-400 text-sm font-medium mb-3">Kapitán / IGL</p>
-                    <p class="text-white/40 text-xs leading-relaxed">Strategické myšlení a cold calls pod tlakem. 5 let na scéně.</p>
-                </div>
-
-                <!-- Hráč 2 -->
-                <div class="glass-card rounded-2xl p-6 text-center">
-                    <div class="w-20 h-20 mx-auto mb-4 rounded-xl bg-gradient-to-br from-violet-600/30 to-indigo-600/30 flex items-center justify-center text-3xl">
-                        ⚡
-                    </div>
-                    <h3 class="font-bold text-lg mb-1">BlitzKrieg</h3>
-                    <p class="text-violet-400 text-sm font-medium mb-3">Entry Fragger</p>
-                    <p class="text-white/40 text-xs leading-relaxed">První dovnitř, poslední pryč. Reflexy pod 150ms.</p>
-                </div>
-
-                <!-- Hráč 3 -->
-                <div class="glass-card rounded-2xl p-6 text-center">
-                    <div class="w-20 h-20 mx-auto mb-4 rounded-xl bg-gradient-to-br from-violet-600/30 to-indigo-600/30 flex items-center justify-center text-3xl">
-                        🛡️
-                    </div>
-                    <h3 class="font-bold text-lg mb-1">IronWall</h3>
-                    <p class="text-violet-400 text-sm font-medium mb-3">Support</p>
-                    <p class="text-white/40 text-xs leading-relaxed">Anchor pozice, smoke lineups, clutch situace. Tichý zabiják.</p>
-                </div>
-
-                <!-- Hráč 4 -->
-                <div class="glass-card rounded-2xl p-6 text-center">
-                    <div class="w-20 h-20 mx-auto mb-4 rounded-xl bg-gradient-to-br from-violet-600/30 to-indigo-600/30 flex items-center justify-center text-3xl">
-                        🔥
-                    </div>
-                    <h3 class="font-bold text-lg mb-1">PhoenixRise</h3>
-                    <p class="text-violet-400 text-sm font-medium mb-3">Lurker</p>
-                    <p class="text-white/40 text-xs leading-relaxed">Flanky, rotace, mind-games. Nikdy nevíš, kde je.</p>
-                </div>
-
-                <!-- Hráč 5 -->
-                <div class="glass-card rounded-2xl p-6 text-center">
-                    <div class="w-20 h-20 mx-auto mb-4 rounded-xl bg-gradient-to-br from-violet-600/30 to-indigo-600/30 flex items-center justify-center text-3xl">
-                        🎮
-                    </div>
-                    <h3 class="font-bold text-lg mb-1">ZeroGrav</h3>
-                    <p class="text-violet-400 text-sm font-medium mb-3">AWPer</p>
-                    <p class="text-white/40 text-xs leading-relaxed">Jeden výstřel, jeden kill. Klidné ruce, ostrý oko.</p>
-                </div>
-            </div>
-
-            <!-- Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-                <div class="glass rounded-2xl p-6 text-center">
-                    <p class="text-3xl font-bold gradient-text mb-1">127</p>
-                    <p class="text-white/40 text-sm">Odehraných zápasů</p>
-                </div>
-                <div class="glass rounded-2xl p-6 text-center">
-                    <p class="text-3xl font-bold gradient-text mb-1">89%</p>
-                    <p class="text-white/40 text-sm">Win rate</p>
-                </div>
-                <div class="glass rounded-2xl p-6 text-center">
-                    <p class="text-3xl font-bold gradient-text mb-1">12</p>
-                    <p class="text-white/40 text-sm">Turnajových výher</p>
-                </div>
-                <div class="glass rounded-2xl p-6 text-center">
-                    <p class="text-3xl font-bold gradient-text mb-1">#3</p>
-                    <p class="text-white/40 text-sm">CZ Ranking</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== GALERIE ===== -->
-    <section id="gallery" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <p class="text-sm text-violet-400 font-semibold tracking-widest uppercase mb-4">Galerie</p>
-                <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-                    Momenty <span class="gradient-text">k zapamatování</span>
-                </h2>
-                <p class="text-white/40 max-w-2xl mx-auto font-light">
-                    Turnaje, LAN party, behind the scenes — takhle vypadá život v NEXUS.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-                <!-- Obrázek 1 - velký -->
-                <div class="gallery-item col-span-2 row-span-2 glass-card rounded-2xl overflow-hidden aspect-square md:aspect-auto">
-                    <div class="w-full h-full min-h-[300px] bg-gradient-to-br from-violet-900/40 to-indigo-900/40 flex flex-col items-center justify-center p-8">
-                        <span class="text-6xl mb-4">🏆</span>
-                        <p class="text-white/60 text-sm font-medium">CZ Championship 2025</p>
-                        <p class="text-white/30 text-xs mt-1">1. místo — Praha</p>
-                    </div>
-                </div>
-
-                <!-- Obrázek 2 -->
-                <div class="gallery-item glass-card rounded-2xl overflow-hidden">
-                    <div class="w-full h-full min-h-[200px] bg-gradient-to-br from-purple-900/40 to-pink-900/40 flex flex-col items-center justify-center p-6">
-                        <span class="text-4xl mb-3">🎮</span>
-                        <p class="text-white/60 text-xs font-medium">LAN Party Brno</p>
-                    </div>
-                </div>
-
-                <!-- Obrázek 3 -->
-                <div class="gallery-item glass-card rounded-2xl overflow-hidden">
-                    <div class="w-full h-full min-h-[200px] bg-gradient-to-br from-indigo-900/40 to-cyan-900/40 flex flex-col items-center justify-center p-6">
-                        <span class="text-4xl mb-3">🖥️</span>
-                        <p class="text-white/60 text-xs font-medium">Setup Tour</p>
-                    </div>
-                </div>
-
-                <!-- Obrázek 4 -->
-                <div class="gallery-item glass-card rounded-2xl overflow-hidden">
-                    <div class="w-full h-full min-h-[200px] bg-gradient-to-br from-blue-900/40 to-violet-900/40 flex flex-col items-center justify-center p-6">
-                        <span class="text-4xl mb-3">📸</span>
-                        <p class="text-white/60 text-xs font-medium">Behind the Scenes</p>
-                    </div>
-                </div>
-
-                <!-- Obrázek 5 -->
-                <div class="gallery-item glass-card rounded-2xl overflow-hidden">
-                    <div class="w-full h-full min-h-[200px] bg-gradient-to-br from-fuchsia-900/40 to-violet-900/40 flex flex-col items-center justify-center p-6">
-                        <span class="text-4xl mb-3">🤝</span>
-                        <p class="text-white/60 text-xs font-medium">Team Bootcamp</p>
-                    </div>
-                </div>
-
-                <!-- Obrázek 6 -->
-                <div class="gallery-item glass-card rounded-2xl overflow-hidden">
-                    <div class="w-full h-full min-h-[200px] bg-gradient-to-br from-violet-900/40 to-rose-900/40 flex flex-col items-center justify-center p-6">
-                        <span class="text-4xl mb-3">🎤</span>
-                        <p class="text-white/60 text-xs font-medium">Interview — Stream</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== KONTAKT ===== -->
-    <section id="contact" class="py-32 px-6 relative">
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl"></div>
-
-        <div class="max-w-3xl mx-auto relative z-10">
-            <div class="text-center mb-16">
-                <p class="text-sm text-violet-400 font-semibold tracking-widest uppercase mb-4">Kontakt</p>
-                <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-                    Pojďme <span class="gradient-text">spolupracovat</span>
-                </h2>
-                <p class="text-white/40 max-w-xl mx-auto font-light">
-                    Hledáme sponzory, spolupráce a nové výzvy. Ozvi se nám.
-                </p>
-            </div>
-
-            <form id="contactForm" class="glass-strong rounded-3xl p-8 md:p-12 space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm text-white/50 mb-2 font-medium">Jméno</label>
-                        <input type="text" placeholder="Tvoje jméno"
-                            class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-sm text-white placeholder-white/25 outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-sm text-white/50 mb-2 font-medium">Email</label>
-                        <input type="email" placeholder="email@example.com"
-                            class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-sm text-white placeholder-white/25 outline-none">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-sm text-white/50 mb-2 font-medium">Předmět</label>
-                    <input type="text" placeholder="Sponzoring / Spolupráce / Jiné"
-                        class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-sm text-white placeholder-white/25 outline-none">
-                </div>
-
-                <div>
-                    <label class="block text-sm text-white/50 mb-2 font-medium">Zpráva</label>
-                    <textarea rows="5" placeholder="Napiš nám něco..."
-                        class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-sm text-white placeholder-white/25 outline-none resize-none"></textarea>
-                </div>
-
-                <button type="submit"
-                    class="btn-glow w-full glass-strong rounded-xl px-8 py-4 text-sm font-semibold tracking-wide text-white hover:bg-violet-600/30 transition">
-                    Odeslat zprávu ✉️
-                </button>
-
-                <div id="formMessage" class="hidden text-center text-sm py-3 rounded-xl"></div>
-            </form>
-        </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="glass border-t border-white/5 py-12 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <span class="text-xl font-bold gradient-text">NEXUS</span>
-                <span class="text-white/30 text-sm">Gaming © 2026</span>
-            </div>
-
-            <div class="flex items-center gap-6">
-                <a href="#" class="text-white/30 hover:text-violet-400 transition text-sm">Twitter</a>
-                <a href="#" class="text-white/30 hover:text-violet-400 transition text-sm">Discord</a>
-                <a href="#" class="text-white/30 hover:text-violet-400 transition text-sm">Twitch</a>
-                <a href="#" class="text-white/30 hover:text-violet-400 transition text-sm">Instagram</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ===== JAVASCRIPT ===== -->
-    <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu on link click
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // Contact form handling
-        const contactForm = document.getElementById('contactForm');
-        const formMessage = document.getElementById('formMessage');
-
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            formMessage.classList.remove('hidden', 'bg-red-500/20', 'text-red-300');
-            formMessage.classList.add('bg-green-500/20', 'text-green-300');
-            formMessage.textContent = '✅ Zpráva byla odeslána! Ozveme se co nejdříve.';
-
-            contactForm.reset();
-
-            setTimeout(() => {
-                formMessage.classList.add('hidden');
-            }, 5000);
-        });
-
-        // Scroll animations using IntersectionObserver
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section:not(#hero)').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'all 0.8s ease';
-            observer.observe(section);
-        });
-
-        // Active nav link highlight on scroll
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('text-white');
-                link.classList.add('text-white/70');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.remove('text-white/70');
-                    link.classList.add('text-white');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
