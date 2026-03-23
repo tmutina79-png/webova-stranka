@@ -4,121 +4,258 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌐 Projekt 4: Landing Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * { font-family: 'Inter', sans-serif; }
-        body {
-            background: #f8fafc;
-            min-height: 100vh;
+        /* ═══════════════════════════════════════════
+           RESET & BASE — LIGHT MODE
+        ═══════════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-main: #f8fafc;
+            --bg-slide: #ffffff;
+            --bg-card: rgba(0,0,0,0.03);
+            --bg-card-hover: rgba(0,0,0,0.06);
+            --accent-purple: #7c3aed;
+            --accent-blue: #2563eb;
+            --accent-cyan: #0891b2;
+            --accent-green: #16a34a;
+            --accent-pink: #db2777;
+            --accent-orange: #ea580c;
+            --accent-yellow: #ca8a04;
+            --accent-red: #dc2626;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border: rgba(0,0,0,0.08);
+            --border-strong: rgba(0,0,0,0.12);
+            --glass: rgba(255,255,255,0.7);
+            --glass-border: rgba(0,0,0,0.06);
+            --radius: 16px;
         }
-        .slide-bg {
+
+        html { font-size: 16px; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE BACKGROUND
+        ═══════════════════════════════════════════ */
+        .slide--pink {
             background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
         }
-        .card {
-            background: #ffffff;
-            border: 2px solid rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
+
+        .slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 80px;
+            min-height: 100vh;
         }
-        .card:hover {
-            border-color: rgba(0,0,0,0.12);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+        /* ═══════════════════════════════════════════
+           TYPOGRAPHY
+        ═══════════════════════════════════════════ */
+        .slide-title {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            color: var(--text-primary);
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #7c3aed, #2563eb, #0891b2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+
+        .tag {
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
+
+        .tag--pink { background: #fce7f3; color: var(--accent-pink); }
+
+        /* ═══════════════════════════════════════════
+           LAYOUT COMPONENTS
+        ═══════════════════════════════════════════ */
+        .content-wrapper {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Bullet list */
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .bullet-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1rem;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+
+        .bullet-list li .bullet-icon {
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            margin-top: 1px;
+        }
+
+        .bullet-list li strong {
+            color: var(--text-primary);
+        }
+
+        /* Prompt box */
         .prompt-box {
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--text-primary);
+            position: relative;
+            margin-top: 18px;
+            font-weight: 500;
+        }
+
+        .prompt-box::before {
+            content: '💬 Prompt';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            padding: 2px 14px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 6px;
+        }
+
+        .prompt-box.pink-prompt {
             background: #fdf2f8;
             border: 2px solid #fbcfe8;
         }
-        .prompt-box-label {
-            color: #db2777;
-            background: #fce7f3;
+        .prompt-box.pink-prompt::before { color: var(--accent-pink); background: #fce7f3; }
+
+        /* Difficulty badge */
+        .difficulty {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 16px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
         }
+
+        .difficulty--hard { background: #fce7f3; color: var(--accent-pink); }
+
+        /* Highlight box */
         .highlight-box {
             background: #f8fafc;
-            border-left: 4px solid #7c3aed;
+            border-left: 4px solid var(--accent-purple);
+            padding: 18px 22px;
+            border-radius: 0 14px 14px 0;
+            margin: 14px 0;
         }
-        .tag {
-            background: #fce7f3;
-            color: #db2777;
+
+        .highlight-box p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ═══════════════════════════════════════════
+           HELPERS
+        ═══════════════════════════════════════════ */
+        .centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .left-align { text-align: left; }
+        .mt-20 { margin-top: 20px; }
+        .mt-32 { margin-top: 32px; }
+        .mb-16 { margin-bottom: 16px; }
+
+        /* ═══════════════════════════════════════════
+           ANIMATIONS
+        ═══════════════════════════════════════════ */
+        .fade-in        { animation: childFade 0.5s 0.05s ease both; }
+        .fade-in-delay-1 { animation: childFade 0.5s 0.18s ease both; }
+        .fade-in-delay-2 { animation: childFade 0.5s 0.32s ease both; }
+        .fade-in-delay-3 { animation: childFade 0.5s 0.46s ease both; }
+
+        @keyframes childFade {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 900px) {
+            .slide { padding: 40px 32px; }
         }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <div class="slide-bg min-h-screen flex items-center justify-center p-6 md:p-12">
-        <div class="max-w-3xl w-full">
-
-            <!-- Hlavička -->
-            <div class="text-center mb-12">
-                <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color: #db2777;">Praktická část</p>
-                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4" style="color: #0f172a;">
-                    🌐 Projekt 4: <span class="gradient-text">Landing Page</span>
-                </h1>
-                <span class="tag inline-block text-sm font-semibold px-4 py-1.5 rounded-full">
-                    🔴 Vibe Master — Zaměření na deployment
-                </span>
+    <section class="slide slide--pink">
+        <div class="content-wrapper">
+            <div class="centered">
+                <span class="tag tag--pink fade-in">Praktická část</span>
+                <h2 class="slide-title fade-in-delay-1">🌐 Projekt 4: Landing Page</h2>
+                <span class="difficulty difficulty--hard fade-in-delay-1">🔴 Vibe Master — Zaměření na deployment</span>
             </div>
 
-            <!-- Info karty -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-                <div class="card rounded-2xl p-6 text-center">
-                    <p class="text-2xl mb-2">🎯</p>
-                    <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Cíl</p>
-                    <p class="text-sm leading-relaxed" style="color: #475569;">Profesionální one-page web s moderním designem — a nasazení na živý URL.</p>
-                </div>
-                <div class="card rounded-2xl p-6 text-center">
-                    <p class="text-2xl mb-2">🔑</p>
-                    <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Co se naučíš</p>
-                    <p class="text-sm leading-relaxed" style="color: #475569;">Plný workflow — prompt → kód → GitHub → live web. Kompletní pipeline.</p>
-                </div>
-                <div class="card rounded-2xl p-6 text-center">
-                    <p class="text-2xl mb-2">⏱️</p>
-                    <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Čas</p>
-                    <p class="text-sm leading-relaxed" style="color: #475569;">~10 minut. Výsledek je skutečný web na internetu.</p>
-                </div>
-            </div>
+            <div class="left-align mt-32 fade-in-delay-2">
+                <ul class="bullet-list mb-16">
+                    <li>
+                        <span class="bullet-icon">🎯</span>
+                        <span><strong>Cíl:</strong> Profesionální one-page web s moderním designem — a nasazení na živý URL.</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon">🔑</span>
+                        <span><strong>Co se naučíš:</strong> Plný workflow — prompt → kód → GitHub → live web. Kompletní pipeline.</span>
+                    </li>
+                    <li>
+                        <span class="bullet-icon">⏱️</span>
+                        <span><strong>Čas:</strong> ~10 minut. Výsledek je skutečný web na internetu.</span>
+                    </li>
+                </ul>
 
-            <!-- Prompt box -->
-            <div class="mb-10">
-                <div class="prompt-box rounded-2xl p-6 md:p-8 relative">
-                    <span class="prompt-box-label inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">💬 Prompt</span>
-                    <p class="text-sm md:text-base leading-relaxed" style="color: #475569; font-family: 'JetBrains Mono', monospace;">
-                        Vytvoř moderní one-page web pro můj esport tým. Použij glassmorphism design
-                        (průhledné prvky s backdrop-blur efektem). Přidej sekce: Hero s názvem týmu a
-                        mottem, O nás s kartami členů týmu, Galerie s obrázkovým gridem, a Kontaktní formulář.
-                        Použij Tailwind CSS, dark mode, gradient pozadí a smooth scroll navigaci.
-                        Všechno v jednom HTML souboru.
+                <div class="prompt-box pink-prompt">
+                    <strong>Vytvoř moderní one-page web pro můj esport tým. Použij glassmorphism design (průhledné prvky s backdrop-blur efektem). Přidej sekce: Hero s názvem týmu a mottem, O nás s kartami členů týmu, Galerie s obrázkovým gridem, a Kontaktní formulář. Použij Tailwind CSS, dark mode, gradient pozadí a smooth scroll navigaci. Všechno v jednom HTML souboru.</strong>
+                </div>
+
+                <div class="highlight-box mt-20 fade-in-delay-3">
+                    <p>
+                        <strong style="color:var(--text-primary);">🚀 Deploy za 2 minuty:</strong>
+                        Push na GitHub → Settings → Pages → Deploy. Hotovo. Tvůj web je na <span style="color:var(--accent-pink);font-weight:700;font-family:'JetBrains Mono',monospace;font-size:0.88rem;">username.github.io/repo</span>
                     </p>
                 </div>
             </div>
-
-            <!-- Deploy info -->
-            <div class="highlight-box rounded-2xl p-6 md:p-8">
-                <h2 class="text-lg font-bold tracking-tight mb-4" style="color: #0f172a;">
-                    🚀 Deploy za 2 minuty
-                </h2>
-                <div class="flex flex-wrap items-center gap-3 text-sm">
-                    <span class="card rounded-xl px-4 py-2 font-medium" style="color: #7c3aed;">Push na GitHub</span>
-                    <span style="color: #94a3b8;">→</span>
-                    <span class="card rounded-xl px-4 py-2 font-medium" style="color: #7c3aed;">Settings</span>
-                    <span style="color: #94a3b8;">→</span>
-                    <span class="card rounded-xl px-4 py-2 font-medium" style="color: #7c3aed;">Pages</span>
-                    <span style="color: #94a3b8;">→</span>
-                    <span class="card rounded-xl px-4 py-2 font-medium" style="color: #7c3aed;">Deploy</span>
-                </div>
-                <p class="text-sm mt-4" style="color: #475569;">
-                    Hotovo. Tvůj web je na <span style="color: #db2777; font-family: 'JetBrains Mono', monospace; font-weight: 500;">username.github.io/repo</span>
-                </p>
-            </div>
-
         </div>
-    </div>
+    </section>
 
 </body>
 </html>
