@@ -5,102 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌐 Projekt 4: Landing Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         * { font-family: 'Inter', sans-serif; }
         body {
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background: #f8fafc;
             min-height: 100vh;
         }
-        .glass {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .slide-bg {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+        }
+        .card {
+            background: #ffffff;
+            border: 2px solid rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: rgba(0,0,0,0.12);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
         .gradient-text {
-            background: linear-gradient(135deg, #a78bfa, #7c3aed, #c084fc);
+            background: linear-gradient(135deg, #7c3aed, #2563eb, #0891b2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         .prompt-box {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(139, 92, 246, 0.3);
+            background: #fdf2f8;
+            border: 2px solid #fbcfe8;
+        }
+        .prompt-box-label {
+            color: #db2777;
+            background: #fce7f3;
+        }
+        .highlight-box {
+            background: #f8fafc;
+            border-left: 4px solid #7c3aed;
+        }
+        .tag {
+            background: #fce7f3;
+            color: #db2777;
         }
     </style>
 </head>
-<body class="text-white antialiased flex items-center justify-center p-6">
+<body class="antialiased">
 
-    <div class="max-w-3xl w-full">
+    <div class="slide-bg min-h-screen flex items-center justify-center p-6 md:p-12">
+        <div class="max-w-3xl w-full">
 
-        <!-- Hlavička -->
-        <div class="text-center mb-12">
-            <p class="text-violet-400 text-sm font-semibold tracking-widest uppercase mb-3">Praktická část</p>
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-                🌐 Projekt 4: <span class="gradient-text">Landing Page</span>
-            </h1>
-            <span class="inline-block bg-red-500/20 text-red-300 text-sm font-semibold px-4 py-1.5 rounded-full border border-red-500/30">
-                🔴 Vibe Master — Zaměření na deployment
-            </span>
-        </div>
+            <!-- Hlavička -->
+            <div class="text-center mb-12">
+                <p class="text-sm font-semibold tracking-widest uppercase mb-3" style="color: #db2777;">Praktická část</p>
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4" style="color: #0f172a;">
+                    🌐 Projekt 4: <span class="gradient-text">Landing Page</span>
+                </h1>
+                <span class="tag inline-block text-sm font-semibold px-4 py-1.5 rounded-full">
+                    🔴 Vibe Master — Zaměření na deployment
+                </span>
+            </div>
 
-        <!-- Info karty -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-            <div class="glass rounded-2xl p-6 text-center">
-                <p class="text-2xl mb-2">🎯</p>
-                <p class="text-white/50 text-xs font-semibold uppercase tracking-wider mb-2">Cíl</p>
-                <p class="text-sm text-white/80 leading-relaxed">Profesionální one-page web s moderním designem — a nasazení na živý URL.</p>
+            <!-- Info karty -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                <div class="card rounded-2xl p-6 text-center">
+                    <p class="text-2xl mb-2">🎯</p>
+                    <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Cíl</p>
+                    <p class="text-sm leading-relaxed" style="color: #475569;">Profesionální one-page web s moderním designem — a nasazení na živý URL.</p>
+                </div>
+                <div class="card rounded-2xl p-6 text-center">
+                    <p class="text-2xl mb-2">🔑</p>
+                    <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Co se naučíš</p>
+                    <p class="text-sm leading-relaxed" style="color: #475569;">Plný workflow — prompt → kód → GitHub → live web. Kompletní pipeline.</p>
+                </div>
+                <div class="card rounded-2xl p-6 text-center">
+                    <p class="text-2xl mb-2">⏱️</p>
+                    <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: #94a3b8;">Čas</p>
+                    <p class="text-sm leading-relaxed" style="color: #475569;">~10 minut. Výsledek je skutečný web na internetu.</p>
+                </div>
             </div>
-            <div class="glass rounded-2xl p-6 text-center">
-                <p class="text-2xl mb-2">🔑</p>
-                <p class="text-white/50 text-xs font-semibold uppercase tracking-wider mb-2">Co se naučíš</p>
-                <p class="text-sm text-white/80 leading-relaxed">Plný workflow — prompt → kód → GitHub → live web. Kompletní pipeline.</p>
-            </div>
-            <div class="glass rounded-2xl p-6 text-center">
-                <p class="text-2xl mb-2">⏱️</p>
-                <p class="text-white/50 text-xs font-semibold uppercase tracking-wider mb-2">Čas</p>
-                <p class="text-sm text-white/80 leading-relaxed">~10 minut. Výsledek je skutečný web na internetu.</p>
-            </div>
-        </div>
 
-        <!-- Prompt box -->
-        <div class="mb-10">
-            <div class="flex items-center gap-2 mb-3">
-                <span class="text-lg">💬</span>
-                <h2 class="text-lg font-bold tracking-tight">PROMPT</h2>
+            <!-- Prompt box -->
+            <div class="mb-10">
+                <div class="prompt-box rounded-2xl p-6 md:p-8 relative">
+                    <span class="prompt-box-label inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">💬 Prompt</span>
+                    <p class="text-sm md:text-base leading-relaxed" style="color: #475569; font-family: 'JetBrains Mono', monospace;">
+                        Vytvoř moderní one-page web pro můj esport tým. Použij glassmorphism design
+                        (průhledné prvky s backdrop-blur efektem). Přidej sekce: Hero s názvem týmu a
+                        mottem, O nás s kartami členů týmu, Galerie s obrázkovým gridem, a Kontaktní formulář.
+                        Použij Tailwind CSS, dark mode, gradient pozadí a smooth scroll navigaci.
+                        Všechno v jednom HTML souboru.
+                    </p>
+                </div>
             </div>
-            <div class="prompt-box rounded-2xl p-6 md:p-8">
-                <p class="text-sm md:text-base text-white/70 leading-relaxed font-mono">
-                    Vytvoř moderní one-page web pro můj esport tým. Použij glassmorphism design
-                    (průhledné prvky s backdrop-blur efektem). Přidej sekce: Hero s názvem týmu a
-                    mottem, O nás s kartami členů týmu, Galerie s obrázkovým gridem, a Kontaktní formulář.
-                    Použij Tailwind CSS, dark mode, gradient pozadí a smooth scroll navigaci.
-                    Všechno v jednom HTML souboru.
+
+            <!-- Deploy info -->
+            <div class="highlight-box rounded-2xl p-6 md:p-8">
+                <h2 class="text-lg font-bold tracking-tight mb-4" style="color: #0f172a;">
+                    🚀 Deploy za 2 minuty
+                </h2>
+                <div class="flex flex-wrap items-center gap-3 text-sm">
+                    <span class="card rounded-xl px-4 py-2 font-medium" style="color: #7c3aed;">Push na GitHub</span>
+                    <span style="color: #94a3b8;">→</span>
+                    <span class="card rounded-xl px-4 py-2 font-medium" style="color: #7c3aed;">Settings</span>
+                    <span style="color: #94a3b8;">→</span>
+                    <span class="card rounded-xl px-4 py-2 font-medium" style="color: #7c3aed;">Pages</span>
+                    <span style="color: #94a3b8;">→</span>
+                    <span class="card rounded-xl px-4 py-2 font-medium" style="color: #7c3aed;">Deploy</span>
+                </div>
+                <p class="text-sm mt-4" style="color: #475569;">
+                    Hotovo. Tvůj web je na <span style="color: #db2777; font-family: 'JetBrains Mono', monospace; font-weight: 500;">username.github.io/repo</span>
                 </p>
             </div>
-        </div>
 
-        <!-- Deploy info -->
-        <div class="glass rounded-2xl p-6 md:p-8">
-            <div class="flex items-center gap-2 mb-4">
-                <span class="text-lg">🚀</span>
-                <h2 class="text-lg font-bold tracking-tight">Deploy za 2 minuty</h2>
-            </div>
-            <div class="flex flex-wrap items-center gap-3 text-sm">
-                <span class="bg-violet-600/20 text-violet-300 px-4 py-2 rounded-xl border border-violet-500/20 font-medium">Push na GitHub</span>
-                <span class="text-white/30">→</span>
-                <span class="bg-violet-600/20 text-violet-300 px-4 py-2 rounded-xl border border-violet-500/20 font-medium">Settings</span>
-                <span class="text-white/30">→</span>
-                <span class="bg-violet-600/20 text-violet-300 px-4 py-2 rounded-xl border border-violet-500/20 font-medium">Pages</span>
-                <span class="text-white/30">→</span>
-                <span class="bg-violet-600/20 text-violet-300 px-4 py-2 rounded-xl border border-violet-500/20 font-medium">Deploy</span>
-            </div>
-            <p class="text-white/40 text-sm mt-4">
-                Hotovo. Tvůj web je na <span class="text-violet-400 font-medium">username.github.io/repo</span>
-            </p>
         </div>
-
     </div>
 
 </body>
