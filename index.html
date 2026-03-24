@@ -360,16 +360,24 @@
 
     <!-- ========== FOOTER ========== -->
     <footer class="glass border-t border-black/5 py-10 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <span class="text-xl font-extrabold gradient-text">NEXUS</span>
-                <span class="text-slate-400 text-sm">Gaming © 2026</span>
+        <div class="max-w-7xl mx-auto flex flex-col items-center gap-8">
+            <div class="flex flex-col md:flex-row items-center justify-between w-full gap-6">
+                <div class="flex items-center gap-3">
+                    <span class="text-xl font-extrabold gradient-text">NEXUS</span>
+                    <span class="text-slate-400 text-sm">Gaming © 2026</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="text-slate-400 hover:text-violet-600 transition text-sm">Twitter</a>
+                    <a href="#" class="text-slate-400 hover:text-violet-600 transition text-sm">Discord</a>
+                    <a href="#" class="text-slate-400 hover:text-violet-600 transition text-sm">Twitch</a>
+                    <a href="#" class="text-slate-400 hover:text-violet-600 transition text-sm">Instagram</a>
+                </div>
             </div>
-            <div class="flex items-center gap-6">
-                <a href="#" class="text-slate-400 hover:text-violet-600 transition text-sm">Twitter</a>
-                <a href="#" class="text-slate-400 hover:text-violet-600 transition text-sm">Discord</a>
-                <a href="#" class="text-slate-400 hover:text-violet-600 transition text-sm">Twitch</a>
-                <a href="#" class="text-slate-400 hover:text-violet-600 transition text-sm">Instagram</a>
+            <!-- QR kód -->
+            <div class="flex flex-col items-center gap-2 pt-2">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://tmutina79-png.github.io/webova-stranka/&color=7c3aed&bgcolor=f8fafc"
+                     alt="QR kód stránky" width="120" height="120" class="rounded-lg border border-black/6 shadow-sm">
+                <p class="text-xs text-slate-400">Naskenuj a sdílej</p>
             </div>
         </div>
     </footer>
